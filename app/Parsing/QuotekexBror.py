@@ -14,7 +14,8 @@ class QuotekexBror(Parsing):
         element = self.driver.find_element_by_css_selector('.pair-information')
         self.driver.execute_script("arguments[0].click();", element)
 
-    def getText(self): 
+    #нахождение цены 
+    def getPrice(self): 
         from bs4 import BeautifulSoup
 
         time.sleep(2)
@@ -24,16 +25,12 @@ class QuotekexBror(Parsing):
         self.savePriceBase(price) 
         return price 
     
+    #сохранение цены в базу данных 
     def savePriceBase(self, price):
         base = Base() 
         base.insert('INSERT INTO price (site, price) VALUES ("'+self.url+'" ,  '+price+' )' )
 
+    #вывод цены
     def getOnlinePrice(self):
-        mas = [] 
-        i = 0 
-        while i < 10:
-            mas.append(float(self.getText()))
-            i += 1 
-
-        return mas
-
+        while True:
+            print(self.getPrice()) 

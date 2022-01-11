@@ -1,12 +1,15 @@
 import sqlite3
- 
-# conn = sqlite3.connect("mydatabase.db") # или :memory: чтобы сохранить в RAM
-# cursor = conn.cursor()
- 
-# # Создание таблицы
-# # cursor.execute("""CREATE TABLE price
-# #                   (id int PRIMARY KEY NOT NULL, site text, price float, date datetime)
-# #                """)
+
+try: 
+    conn = sqlite3.connect("mydatabase.db") # или :memory: чтобы сохранить в RAM
+    cursor = conn.cursor()
+    
+    cursor.execute("""CREATE TABLE price
+                    (id int PRIMARY KEY NOT NULL, site text, price float, date datetime)
+                """)
+    cursor.close() 
+except:
+    pass
 
 
 class Base:

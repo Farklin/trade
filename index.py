@@ -1,7 +1,8 @@
-from manager import ParsingBirzhi, Canvas
-from asinc import Async
+
 from app.Parsing.QuotekexBror import QuotekexBror
+from app.Parsing.AlpariforexSite import AlpariforexSite
 from threading import Thread
+from app.Async.Async import Async
 
 import time
 
@@ -20,10 +21,21 @@ import time
 #     th = Thread(target=parsing, args=( ))
 #     th.start()
 
-url = 'https://quotex-broker.com/ru/demo-trade'
-parsing = QuotekexBror(url)
-parsing.auth()
-parsing.inisialization()
-parsing.pairClick()
-result = parsing.getOnlinePrice()
-print(result)
+def qumo(): 
+    url = 'https://quotex-broker.com/ru/demo-trade'
+    parsing = QuotekexBror(url)
+    parsing.auth('12')
+    parsing.inisialization() 
+    parsing.pairClick()
+    parsing.getOnlinePrice()
+
+def alpa():
+    url = 'https://alpariforex.site/ru/fix-contracts/'
+    parsing = AlpariforexSite(url)
+    parsing.auth('13')
+    parsing.inisialization()
+
+ass = Async()
+ass.addProcess(qumo)
+ass.addProcess(alpa)
+ass.startProcess() 

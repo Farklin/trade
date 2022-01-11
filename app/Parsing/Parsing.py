@@ -11,9 +11,9 @@ class Parsing:
         self.url = url 
 
     # инициализация chrome         
-    def auth(self):
+    def auth(self, unic):
         chrome_options = Options()
-        chrome_options.add_argument("user-data-dir="+os.getcwd()+"selenium") 
+        chrome_options.add_argument("user-data-dir="+os.getcwd() + unic +"selenium") 
         self.driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 
         #self.driver.execute_script("document.body.style.zoom='80%'")
