@@ -34,8 +34,9 @@ def alpa():
     parsing = AlpariforexSite(url)
     parsing.auth('13')
     parsing.inisialization()
+    parsing.getPrice()
 
 ass = Async()
-ass.addProcess(qumo)
+#ass.addProcess(qumo)
 ass.addProcess(alpa)
 ass.startProcess() 

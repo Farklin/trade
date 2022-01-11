@@ -8,7 +8,7 @@ class Async:
         self.processing = []
          
     def addProcess(self, function, *args):
-        x = threading.Thread(target=function, args=args,  daemon=True)
+        x = threading.Thread(target=function, args=args)
         self.processing.append(x)
 
     def startProcess(self):
